@@ -49,6 +49,7 @@ btnClose.addEventListener('click', () => {
 }
 );
 
+
 // form validation and send
 const form = document.querySelector('.form');
 const telSelector = form.querySelector('input[type="tel"]');
@@ -109,6 +110,7 @@ validation
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
+          alert("good");
           console.log('Отправлено');
         }
       }
@@ -117,7 +119,7 @@ validation
     }
 
     xhr.open('POST', 'mail.php', true);
-    // xhr.send(formData);
+    xhr.send(formData);
 
     event.target.reset();
   });

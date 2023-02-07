@@ -33,15 +33,15 @@ try {
 
   // Настройки вашей почты
   $mail->Host       = 'smtp.gmail.com'; // SMTP сервера вашей почты
-  $mail->Username   = ''; // Логин на почте
-  $mail->Password   = ''; // Пароль на почте
+  $mail->Username   = 'oleg.panikov97@gmail.com'; // Логин на почте
+  $mail->Password   = 'hpyhzoiroycrxvxe'; // Пароль на почте
   $mail->SMTPSecure = 'ssl';
   $mail->Port       = 465;
 
-  $mail->setFrom('', 'Заявка с вашего сайта'); // Адрес самой почты и имя отправителя
+  $mail->setFrom('oleg.panikov97@gmail.com', 'Заявка с вашего сайта'); // Адрес самой почты и имя отправителя
 
   // Получатель письма
-  $mail->addAddress('');
+  $mail->addAddress('oleg.panikov97@gmail.com');
 
   // Прикрипление файлов к письму
   if (!empty($file['name'][0])) {
@@ -52,7 +52,7 @@ try {
           $mail->addAttachment($uploadfile, $filename);
           $rfile[] = "Файл $filename прикреплён";
       } else {
-          $rfile[] = "Не удалось прикрепить файл $filename";
+        $rfile[] = "Не удалось прикрепить файл $filename";
       }
     }
   }
