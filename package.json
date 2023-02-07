@@ -3,8 +3,9 @@
   "version": "2.1.0",
   "description": "gulp-builder for weblayout",
   "main": "gulpfile.js",
-  "homepage":"",
+  "homepage":"https://github.com/Juceys/T_ZEZ",
   "scripts": {
+    "deploy":"gh-pages -d app",
     "html": "node-w3c-validator -f lint -evH -i app/**/*.html",
     "dev": "gulp",
     "build": "gulp build",

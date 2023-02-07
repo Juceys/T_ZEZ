@@ -38,12 +38,12 @@ const reserve = document.querySelector('.hero__btn');
 const btnClose = document.querySelector('.button--close');
 const Form = document.querySelector('.formes');
 
-reserve.addEventListener('click', () =>{
+reserve.addEventListener('click', () => {
   Form.classList.toggle('modale__active');
   document.body.classList.toggle('_lock');
 }
 );
-btnClose.addEventListener('click', () =>{
+btnClose.addEventListener('click', () => {
   Form.classList.remove('modale__active');
   document.body.classList.remove('_lock');
 }
@@ -112,11 +112,12 @@ validation
           console.log('Отправлено');
         }
       }
-      Form.classList.remove('modale__active')
+      Form.classList.remove('modale__active');
+      document.body.classList.remove('_lock');
     }
 
     xhr.open('POST', 'mail.php', true);
-    xhr.send(formData);
+    // xhr.send(formData);
 
     event.target.reset();
   });
