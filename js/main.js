@@ -1,1 +1,105 @@
-(()=>{new Swiper("#swiper",{slidesPerView:1,centeredSlides:!0,spaceBetween:0,loop:!0,navigation:{nextEl:".reviews__btn-right2",prevEl:".reviews__btn-left2"}});const e=document.querySelector(".burger"),t=document.querySelector(".nav"),r=document.querySelector(".socials");e.addEventListener("click",(function(s){e.classList.toggle("burger__active"),t.classList.toggle("nav__active"),r.classList.toggle("socials__active"),document.body.classList.toggle("_lock")})),document.querySelectorAll(".nav__link").forEach((s=>{s.addEventListener("click",(()=>{e.classList.remove("burger__active"),t.classList.remove("nav__active"),r.classList.remove("socials__active"),document.body.classList.remove("_lock")}))}));const s=document.querySelector(".hero__btn"),l=document.querySelector(".button--close"),o=document.querySelector(".formes");s.addEventListener("click",(()=>{o.classList.toggle("modale__active"),document.body.classList.toggle("_lock")})),l.addEventListener("click",(()=>{o.classList.remove("modale__active"),document.body.classList.remove("_lock")}));const a=document.querySelector(".form").querySelector('input[type="tel"]');new Inputmask("+7 (999) 999-99-99").mask(a),new JustValidate(".form").addField(".input-name",[{rule:"minLength",value:3,errorMessage:"Не менее 3 символов"},{rule:"maxLength",value:30},{rule:"required",value:!0,errorMessage:"Введите имя!"}]).addField(".input-mail",[{rule:"required",value:!0,errorMessage:"Email обязателен"},{rule:"email",value:!0,errorMessage:"Введите корректный Email"}]).addField(".input-tel",[{rule:"required",value:!0,errorMessage:"Телефон обязателен"},{rule:"function",validator:function(){return 10===a.inputmask.unmaskedvalue().length},errorMessage:"Введите корректный телефон"}]).onSuccess((e=>{new FormData(e.target);let t=new XMLHttpRequest;t.onreadystatechange=function(){4===t.readyState&&200===t.status&&console.log("Отправлено"),o.classList.remove("modale__active"),document.body.classList.remove("_lock")},t.open("POST","mail.php",!0),e.target.reset()}))})();
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!************************!*\
+  !*** ./src/js/main.js ***!
+  \************************/
+// SWIPER
+let swiperTest2 = new Swiper("#swiper", {
+  slidesPerView: 1,
+  centeredSlides: true,
+  spaceBetween: 0,
+  loop: true,
+  navigation: {
+    nextEl: '.reviews__btn-right2',
+    prevEl: '.reviews__btn-left2'
+  }
+});
+
+//BURGER
+const IconNav = document.querySelector('.burger');
+const navbar = document.querySelector('.nav');
+const socials = document.querySelector('.socials');
+IconNav.addEventListener("click", function (e) {
+  IconNav.classList.toggle('burger__active');
+  navbar.classList.toggle('nav__active');
+  socials.classList.toggle('socials__active');
+  document.body.classList.toggle('_lock');
+});
+document.querySelectorAll('.nav__link').forEach(el => {
+  el.addEventListener('click', () => {
+    IconNav.classList.remove('burger__active');
+    navbar.classList.remove('nav__active');
+    socials.classList.remove('socials__active');
+    document.body.classList.remove('_lock');
+  });
+});
+
+// From display
+const reserve = document.querySelector('.hero__btn');
+const btnClose = document.querySelector('.button--close');
+const Form = document.querySelector('.formes');
+reserve.addEventListener('click', () => {
+  Form.classList.toggle('modale__active');
+  document.body.classList.toggle('_lock');
+});
+btnClose.addEventListener('click', () => {
+  Form.classList.remove('modale__active');
+  document.body.classList.remove('_lock');
+});
+
+// form validation and send
+const form = document.querySelector('.form');
+const telSelector = form.querySelector('input[type="tel"]');
+const inputMask = new Inputmask('+7 (999) 999-99-99');
+inputMask.mask(telSelector);
+const validation = new JustValidate('.form');
+validation.addField('.input-name', [{
+  rule: 'minLength',
+  value: 3,
+  errorMessage: 'Не менее 3 символов'
+}, {
+  rule: 'maxLength',
+  value: 30
+}, {
+  rule: 'required',
+  value: true,
+  errorMessage: 'Введите имя!'
+}]).addField('.input-mail', [{
+  rule: 'required',
+  value: true,
+  errorMessage: 'Email обязателен'
+}, {
+  rule: 'email',
+  value: true,
+  errorMessage: 'Введите корректный Email'
+}]).addField('.input-tel', [{
+  rule: 'required',
+  value: true,
+  errorMessage: 'Телефон обязателен'
+}, {
+  rule: 'function',
+  validator: function () {
+    const phone = telSelector.inputmask.unmaskedvalue();
+    return phone.length === 10;
+  },
+  errorMessage: 'Введите корректный телефон'
+}]).onSuccess(event => {
+  let formData = new FormData(event.target);
+  let xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        alert("good");
+        console.log('Отправлено');
+      }
+    }
+    Form.classList.remove('modale__active');
+    document.body.classList.remove('_lock');
+  };
+  xhr.open('POST', 'mail.php', true);
+  xhr.send(formData);
+  event.target.reset();
+});
+/******/ })()
+;
+//# sourceMappingURL=main.js.map
